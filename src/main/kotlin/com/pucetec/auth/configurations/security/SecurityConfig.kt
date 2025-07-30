@@ -17,17 +17,14 @@ class SecurityConfig {
         http
             .authorizeHttpRequests { auth ->
                 auth
-                    .requestMatchers(
-                        "/api/health"
-                    ).permitAll()
-                    .requestMatchers("/api/admin/**").hasRole("ADMINS")
+                    .requestMatchers("/api/health").permitAll()
+                    .requestMatchers("/api/admin/**").hasAuthority("ADMINS")
+                    .requestMatchers("/api/secure-data").hasAnyAuthority("ADMINS", "SUPERUSERS")
                     .anyRequest().authenticated()
             }
             .oauth2ResourceServer { oauth2 ->
                 oauth2.jwt { Customizer.withDefaults<JwtDecoder>() }
             }
-
         return http.build()
     }
-
 }

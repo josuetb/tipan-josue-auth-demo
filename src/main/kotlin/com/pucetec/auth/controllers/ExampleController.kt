@@ -24,4 +24,13 @@ class ExampleController {
         return "Admin action performed successfully!"
     }
 
+    @PostMapping("/everybody")
+    fun everybody(): String {
+        return "Everybody can call this endpoint!"
+    }
+
+    @GetMapping("/secure-data")
+    fun secureData(): String {
+        return "Secure Data: Only ADMINS and SUPERUSERS can see this."
+    }
 }

@@ -5,4 +5,4 @@ spring:
     oauth2:
       resourceserver:
         jwt:
-          issuer-uri: #INSERT_ISSUER_URI_HERE
+          issuer-uri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_dxxZSuO9z
